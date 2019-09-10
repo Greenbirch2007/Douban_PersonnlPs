@@ -35,12 +35,13 @@ def next_page():
 def parse_html(html):  # 正则专门有反爬虫的布局设置，不适合爬取表格化数据！
     selector = etree.HTML(html)
 
-    pic_links = selector.xpath('//*[@id="content"]/div/div[1]/ul/li/div[1]/a/img/@src')
+    pic_links = selector.xpath('/html/body/div[3]/div/ul/li/a[1]/img/@src')
     for item in pic_links:
         try:
-            book_cover = item
+            book_cover = "https://fanhao.mmdaren.com"+item
+            print(book_cover)
 
-            urllib.request.urlretrieve(book_cover, '/home/w/for_funny/%s' % (r'%s' % book_cover[-16:]))
+            # urllib.request.urlretrieve(book_cover, '/home/w/for_funny/%s.jpg' % (r'%s' % book_cover[-16:]))
         except FileNotFoundError:
             print('图片下载有问题')
 
@@ -50,12 +51,12 @@ def parse_html(html):  # 正则专门有反爬虫的布局设置，不适合爬�
 
 if __name__ == '__main__':
     driver = webdriver.Chrome()
-    url = 'https://movie.douban.com/celebrity/1370618/photos/'
+    url = 'https://fanhao.mmdaren.com/avnvyou/'
 
     html = get_first_page(url)
     parse_html(html)
-    while True:
-        html = next_page()
-        parse_html(html)
-        print(datetime.datetime.now())
+    # while True:
+    #     html = next_page()
+    #     parse_html(html)
+    #     print(datetime.datetime.now())
 
