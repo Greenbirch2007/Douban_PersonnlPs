@@ -25,7 +25,7 @@ def get_first_page(url):
 
 def next_page():
     for i in range(1,20):  # selenium 循环翻页成功！
-        driver.find_element_by_xpath('//*[@id="content"]/div/div[1]/div[2]/span[3]/a').click()
+        driver.find_element_by_xpath('//*[@id="content"]/div/div[1]/div[2]/span[last()-1]/a').click()
         time.sleep(1)
         html = driver.page_source
         return html
