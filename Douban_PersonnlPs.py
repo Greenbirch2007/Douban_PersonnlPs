@@ -10,8 +10,11 @@ from selenium import webdriver
 from lxml import etree
 import datetime
 
+driver = webdriver.Chrome()
 
-def get_first_page(url):
+
+def get_first_page():
+    url = 'https://movie.douban.com/celebrity/1275260/photos/'
 
 
     driver.set_window_size(1200, 1200)  # 设置窗口大小
@@ -49,13 +52,14 @@ def parse_html(html):  # 正则专门有反爬虫的布局设置，不适合爬�
 
 
 if __name__ == '__main__':
-    driver = webdriver.Chrome()
-    url = 'https://movie.douban.com/celebrity/1370618/photos/'
 
-    html = get_first_page(url)
+
+
+    html = get_first_page()
     parse_html(html)
     while True:
         html = next_page()
         parse_html(html)
         print(datetime.datetime.now())
+
 
