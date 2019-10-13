@@ -55,7 +55,8 @@ class GetImage(object):
             self.save(res_img, file_name)
 
 if __name__ == '__main__':
-    url_list = ['https://fanhao.mmdaren.com/avnvyou/']
+    # url_list = ['https://fanhao.mmdaren.com/avnvyou/']
+    url_list = ['https://www.meitulu.com/item/12002.html']
 
     for url in url_list:
         text = GetImage(url)

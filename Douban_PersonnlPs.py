@@ -10,18 +10,20 @@ from selenium import webdriver
 from lxml import etree
 import datetime
 
-driver = webdriver.Chrome()
 
 
 def get_first_page():
+
     url = 'https://movie.douban.com/celebrity/1275260/photos/'
 
 
-    driver.set_window_size(1200, 1200)  # 设置窗口大小
+    options = webdriver.ChromeOptions()
+    options.add_argument("--no-sandbox")
+
+    driver = webdriver.Chrome("/usr/bin/chromedriver", chrome_options=options)
     driver.get(url)
     html = driver.page_source
     return html
-
 
 
 
@@ -61,5 +63,8 @@ if __name__ == '__main__':
         html = next_page()
         parse_html(html)
         print(datetime.datetime.now())
+
+
+
 
 

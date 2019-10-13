@@ -2,6 +2,7 @@
 # -*- coding:utf8 -*-
 
 # 写个小脚本就搞定了！
+import datetime
 import re
 import urllib
 
@@ -66,6 +67,7 @@ if __name__ == '__main__':
 
         html = get_first_page(url)
         parse_html(html)
+        print(datetime.datetime.now())
 
 
 # //*[@id="page-content"]/div[1]/div/div/div[4]/div/div[2]/ul/li/div/div[2]/p[1]/a/@href
